@@ -31,12 +31,13 @@
                         <td>{{ $employee->email }}</td>
                         <td>{{ $employee->designation }}</td>
                         <td>{{ $employee->age }}</td>
-                        <td><a href="" class="btn btn-primary">Edit</a></td>
-                        <td><a href="" class="btn btn-primary">Delete</a></td>
+                        <td><a href="/employees/edit/{{ $employee->id }}" class="btn btn-primary">Edit</a></td>
+                        <td><a href="/employees/delete/{{ $employee->id }}" class="btn btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
             </tbody>
-          </table>
+        </table>
+        {{ $employees->links("pagination::simple-bootstrap-5") }}
         </div>
       </div>
        
