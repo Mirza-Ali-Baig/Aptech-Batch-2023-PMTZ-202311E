@@ -18,5 +18,5 @@ Route::post('/login',[AuthController::class,'login']);
 // Logout Route
 Route::get('/logout',[AuthController::class,'logout']);
 
-Route::view('/dashboard', 'dashboard');
+Route::get('/dashboard', [AuthController::class, 'dashboard']);
 

@@ -15,6 +15,11 @@ class AuthController extends Controller
             'name'=>'required',
             'email'=>'required|unique:users',
             'password'=>'required|alpha_num'
+        ],[
+            'name.required'=>'Name is required',
+            'email.required'=>'Email is required',
+            'email.unique'=>'Email already exists',
+            'password.required'=>'Password is required',
         ]);
 
         User::create([
@@ -22,6 +27,7 @@ class AuthController extends Controller
             'email'=>$req->email,
             'password'=>Hash::make($req->password),
         ]);
+        return redirect('/login');
     }
     public function login(Request $request)
     {
@@ -42,4 +48,12 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+    public function dashboard()
+    {
+        if(Auth::check()){
+            return view('dashboard');
+        }
+        return redirect('/login');
+    }
 }
+// middleware('auth')

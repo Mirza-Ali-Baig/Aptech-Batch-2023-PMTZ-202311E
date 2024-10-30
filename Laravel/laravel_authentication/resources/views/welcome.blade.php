@@ -1,22 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laravel Authentication</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Laravel Auth</title>
 </head>
 <body>
-<nav>
-    <ul>
-        <li>
-            <a href="/login">Login</a>
-        </li>
-        <li>
-            <a href="/register">Register</a>
-        </li>
-    </ul>
-</nav>
+    <nav class="navbar">
+        <div class="logo">Laravel Auth</div>
+        <div class="nav-buttons">
+            <a href="/login" class="btn login-btn">Login</a>
+            <a href="/register" class="btn signup-btn">Signup</a>
+        </div>
+    </nav>
 </body>
 </html>

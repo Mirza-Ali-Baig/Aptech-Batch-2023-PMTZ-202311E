@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-buttons {
+    display: flex;
+}
+
+.btn {
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    color: white;
+    background-color: #555;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #777;
+}
+
+.signup-btn {
+    background-color: #4CAF50; /* Green */
+}
+
+.signup-btn:hover {
+    background-color: #45a049; /* Darker green */
+}
