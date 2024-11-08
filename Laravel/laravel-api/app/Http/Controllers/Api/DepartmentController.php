@@ -14,7 +14,11 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments=Department::with('employees')->get();
-        return $departments;
+        return response()->json([
+            'status'=>true,
+            'message'=>'departments retrieved successfully',
+            'data'=>$departments
+        ]);
     }
 
     /**
@@ -30,7 +34,25 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required'
+        ]);
+       $department=Department::create([
+           'name'=>$request->name
+       ]);
+       if ($department){
+           return response()->json([
+               'status'=>true,
+               'message'=>'department created successfully',
+               'data'=>$department
+           ]);
+       }else{
+           return response()->json([
+               'status'=>false,
+               'message'=>'department not created',
+               'data'=>[]
+           ]);
+       }
     }
 
     /**
@@ -38,7 +60,20 @@ class DepartmentController extends Controller
      */
     public function show(string $id)
     {
-        //
+       $department=Department::with('employees')->find($id);
+        if ($department){
+            return response()->json([
+                'status'=>true,
+                'message'=>'department retrieved successfully',
+                'data'=>$department
+            ]);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'message'=>'department not found',
+                'data'=>[]
+            ]);
+        }
     }
 
     /**
@@ -54,7 +89,26 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+           'name'=>'required'
+        ]);
+        $department=Department::find($id)->update([
+            'name'=>$request->name
+        ]);
+        if ($department){
+            return response()->json([
+                'status'=>true,
+                'message'=>'department updated successfully',
+                'data'=>Department::find($id)
+            ]);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'message'=>'department not updated',
+                'data'=>[]
+            ]);
+        }
+
     }
 
     /**
@@ -62,6 +116,20 @@ class DepartmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deletedDepartment=Department::find($id);
+       $department=Department::destroy($id);
+        if ($department){
+            return response()->json([
+                'status'=>true,
+                'message'=>'department deleted successfully',
+                'data'=>$deletedDepartment
+            ]);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'message'=>'department not deleted',
+                'data'=>[]
+            ]);
+        }
     }
 }
